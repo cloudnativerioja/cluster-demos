@@ -1,0 +1,8 @@
+cluster:
+  type: k3s
+  name: demo-cluster
+  nodes: 3
+  label-nodes: demos-first-pool
+  region: LON1
+firewall:
+  name: demo-firewall
