@@ -1,4 +1,4 @@
 *.terraform
-local.tfstate
+*.tfstate
 kubeconfig
 *.backup
