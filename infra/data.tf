@@ -2,7 +2,7 @@
 data "civo_size" "medium" {
     filter {
         key = "name"
-        values = ["g4s.kube.medium"]
+        values = [local.cluster.node_type]
     }
 
     sort {
