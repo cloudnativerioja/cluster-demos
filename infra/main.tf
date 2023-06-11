@@ -17,7 +17,7 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
   firewall_id  = civo_firewall.firewall.id
   cluster_type = local.cluster.type
   applications = try(local.cluster.applications, "")
-  cni = try(local.cluster.cni, "")
+  cni          = try(local.cluster.cni, "")
   pools {
     label      = local.cluster.label-nodes
     size       = element(data.civo_size.medium.sizes, 0).name
