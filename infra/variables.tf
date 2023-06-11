@@ -1,4 +1,4 @@
-variable civo_token {
+variable "civo_token" {
   type        = string
   default     = ""
   description = "description"
