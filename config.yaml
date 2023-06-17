@@ -1,0 +1,12 @@
+cluster:
+  type: k3s
+  name: demo-cluster
+  nodes: 3
+  node_type: g4s.kube.medium
+  cni: cilium
+  label-nodes: demos-first-pool
+  region: LON1
+  # Opcionales, se ponen dentro del mismo string una detras de otra
+  #applications: "argo-cd"
+firewall:
+  name: demo-firewall
