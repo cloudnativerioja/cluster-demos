@@ -1,7 +1,7 @@
-name: "Test Terraform Infrastructure"
+name: "Deploy Terraform Infrastructure"
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -43,3 +43,13 @@ jobs:
       - name: Terraform plan
         id: plan
         run: terraform plan -no-color -input=false
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.55.0 # Don't use @master unless you're happy to test the latest version
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          WITH_V: false
+          DEFAULT_BUMP: patch
