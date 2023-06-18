@@ -1,12 +1,9 @@
 terraform {
-  #   backend "s3" {
-  #     bucket = "bucket-name"
-  #     key = "terraform-state/demo-civo.tfstate"
-  #     region  = "us-east-1"
-  #   }
-  backend "local" {
-    path = "local.tfstate"
-  }
+    backend "s3" {
+      bucket = "tf-state-remote-civo"
+      key = "terraform-state/demo-civo.tfstate"
+      region  = "us-east-1"
+    }
 
   required_providers {
     civo = {
