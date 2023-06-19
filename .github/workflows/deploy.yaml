@@ -1,8 +1,8 @@
 ---
-name: "Test Terraform Infrastructure"
+name: "Deploy Terraform Infrastructure"
 
 on: #yamllint disable-line rule:truthy
-  pull_request:
+  push:
     branches:
       - master
 
@@ -14,13 +14,6 @@ env:
   AWS_DEFAULT_REGION: us-east-1
 
 jobs:
-  lintAllTheThings:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: yaml-lint
-        uses: ibiqlik/action-yamllint@v3
-
   terraform:
     name: "Terraform Infrastructure"
     runs-on: ubuntu-latest
@@ -54,3 +47,13 @@ jobs:
       - name: Terraform plan
         id: plan
         run: terraform plan -no-color -input=false
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.55.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          WITH_V: false
+          DEFAULT_BUMP: patch
