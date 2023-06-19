@@ -1,3 +1,4 @@
+---
 cluster:
   type: k3s
   name: demo-cluster
@@ -6,7 +7,7 @@ cluster:
   cni: cilium
   label-nodes: demos-first-pool
   region: LON1
-  # Opcionales, se ponen dentro del mismo string una detras de otra
-  #applications: "argo-cd"
+# Opcionales, se ponen dentro del mismo string una detras de otra
+# applications: "argo-cd"
 firewall:
   name: demo-firewall

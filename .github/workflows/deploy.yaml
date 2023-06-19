@@ -1,6 +1,7 @@
+---
 name: "Deploy Terraform Infrastructure"
 
-on:
+on: # yamllint disable-line rule:truthy
   push:
     branches:
       - master
@@ -51,7 +52,7 @@ jobs:
         run: terraform apply -auto-approve -input=false
 
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.55.0 # Don't use @master unless you're happy to test the latest version
+        uses: anothrNick/github-tag-action@1.55.0
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           WITH_V: false
