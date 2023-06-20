@@ -57,7 +57,7 @@ jobs:
       - name: Export kubeconfig var
         id: exportar_variable
         run: |
-          echo "::set-output name=kubeconfig::$(cat $HOME/.kube/config | base64)"
+        echo "::set-output name=kubeconfig::$(cat $HOME/.kube/config | base64)"
 
       - name: Install Argo application
         uses: actions-hub/kubectl@master
