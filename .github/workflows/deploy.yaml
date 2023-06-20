@@ -56,7 +56,7 @@ jobs:
 
       - name: Export kubeconfig var
         id: exportar_variable
-        run: echo "::set-output name=kubeconfig::$(cat $HOME/.kube/config | base64)"
+        run: echo "::set-output name=kubeconfig::$(cat $HOME/.kube/config | base64)" # yamllint disable-line rule:line-length
 
       - name: Install Argo application
         uses: actions-hub/kubectl@master
