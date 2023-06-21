@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test-env
+  name: core-apps
   namespace: argocd
 spec:
   destination:
     name: ""
     server: "https://kubernetes.default.svc"
   source:
-    path: applications/test
+    path: core
     repoURL: "https://github.com/cloudnativerioja/cluster-applications.git"
     targetRevision: HEAD
     directory:
