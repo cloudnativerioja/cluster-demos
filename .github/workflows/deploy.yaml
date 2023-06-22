@@ -52,7 +52,9 @@ jobs:
         run: terraform apply -auto-approve -input=false
 
       - name: Move kubeconfig
-        run: mv kubeconfig ~/.kube/config
+        run: |
+          mkdir -p ~/.kube
+          mv kubeconfig ~/.kube/config
 
       - name: Export kubeconfig var
         id: exportar_variable
