@@ -51,6 +51,20 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
 
+      - name: Move kubeconfig
+        run: mv kubeconfig ~/.kube/config
+
+      - name: Export kubeconfig var
+        id: exportar_variable
+        run: echo "::set-output name=kubeconfig::$(cat $HOME/.kube/config | base64)" # yamllint disable-line rule:line-length
+
+      - name: Install Argo application
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ steps.exportar_variable.outputs.kubeconfig }}
+        with:
+          args: apply -f ../argo-app/repo-pull.yaml
+
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.55.0
         env:

@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: core-apps
+  namespace: argocd
+spec:
+  destination:
+    name: ""
+    server: "https://kubernetes.default.svc"
+  source:
+    path: core
+    repoURL: "https://github.com/cloudnativerioja/cluster-applications.git"
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        maxDuration: 3m0s
+        factor: 2
+    syncOptions: []
