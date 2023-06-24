@@ -65,7 +65,7 @@ jobs:
       - name: Install Argo application
         working-directory: ./argo-app
         run: |
-          kubectl apply -f repo-pull.yaml
+          kubectl apply -f . --recursive
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.55.0
