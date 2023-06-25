@@ -9,7 +9,7 @@ spec:
     name: ""
     server: "https://kubernetes.default.svc"
   source:
-    path: core
+    path: applications/core
     repoURL: "https://github.com/cloudnativerioja/cluster-applications.git"
     targetRevision: HEAD
     directory:
