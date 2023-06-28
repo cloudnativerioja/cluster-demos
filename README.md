@@ -2,6 +2,14 @@
 
 Cluster proporcionado por **Civo Cloud** para el Cloud Native Rioja.
 
+## Diagrama de arquitectura
+
+![arch-diagram](assets/cluster-demos.png)
+
+## Objetivo
+
+El cluster proporcionado por Civo Cloud se utilizará para el desarrollo de aplicaciones y servicios de la comunidad Cloud Native Rioja. Se utilizará para realizar pruebas de concepto, despliegue de aplicaciones y servicios, y para la realización de talleres y eventos.
+
 ## Funcionamiento
 
 El cluster actualmente está compuesto por 3 nodos de 4Gb Ram y 2vCPU cada uno. Simplemente se han creado 2 workflow en Github para el despliegue de la infraestructura y la instalación de aplicaciones adicionales.
