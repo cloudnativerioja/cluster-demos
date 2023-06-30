@@ -21,3 +21,5 @@ Para el despliegue de la infraestructura se ha utilizado Terraform, el cual se e
 ## Configuración
 
 Para la configuración del cluster se ha creado un fichero llamado `config.yaml`, en el cual se especifican los párametros para cambiar dinamicamente variables como la cantidad y tipo de nodos, el software de configuración del cluster, nombre del cluster, aplicaciones por defecto a instalar...
+
+# POWERED BY [CIVO CLOUD](https://www.civo.com/)
