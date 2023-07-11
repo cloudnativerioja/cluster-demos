@@ -31,3 +31,8 @@ resource "local_file" "kubeconfig" {
   filename   = "./kubeconfig"
   content    = civo_kubernetes_cluster.demo-cluster.kubeconfig
 }
+
+# Create a DNS zone in Civo
+resource "civo_dns_domain_name" "cluster_domain" {
+  name = "cluster.cloudnativerioja.com"
+}
