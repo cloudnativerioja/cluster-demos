@@ -36,3 +36,13 @@ resource "local_file" "kubeconfig" {
 resource "civo_dns_domain_name" "cluster_domain" {
   name = "cluster.cloudnativerioja.com"
 }
+
+# Install ArgoCD
+resource "helm_release" "argocd" {
+  depends_on = [civo_kubernetes_cluster.demo-cluster]
+
+  name       = "argocd"
+  repository = data.helm_repository.argo.metadata[0].name
+  chart      = "argo-cd"
+  namespace  = "argocd"
+}
