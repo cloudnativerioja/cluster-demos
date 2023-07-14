@@ -10,8 +10,3 @@ data "civo_size" "medium" {
     direction = "asc"
   }
 }
-
-data "helm_repository" "argo" {
-  name = "argo"
-  url  = "https://argoproj.github.io/argo-helm"
-}

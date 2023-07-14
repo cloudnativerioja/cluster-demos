@@ -40,9 +40,8 @@ resource "civo_dns_domain_name" "cluster_domain" {
 # Install ArgoCD
 resource "helm_release" "argocd" {
   depends_on = [civo_kubernetes_cluster.demo-cluster]
-
   name       = "argocd"
-  repository = data.helm_repository.argo.metadata[0].name
+  repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
   namespace  = "argocd"
 }
