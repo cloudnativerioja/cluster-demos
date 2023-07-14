@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -8,12 +9,11 @@ metadata:
    ingress.kubernetes.io/ssl-redirect: "false"
    nginx.ingress.kubernetes.io/ssl-redirect: "false"
    cert-manager.io/cluster-issuer: letsencrypt-prod
-
 spec:
   tls:
-      - secretName: argo-tls-secret
-        hosts:
-          - argo.cluster.cloudnativerioja.com
+    - secretName: argo-tls-secret
+      hosts:
+        - argo.cluster.cloudnativerioja.com
   rules:
     - host: argo.cluster.cloudnativerioja.com
       http:
