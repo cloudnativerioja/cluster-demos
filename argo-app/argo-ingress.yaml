@@ -1,14 +1,13 @@
----
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: argo-ui
   namespace: argocd
   annotations:
-   kubernetes.io/ingress.class: "traefik"
-   ingress.kubernetes.io/ssl-redirect: "false"
-   nginx.ingress.kubernetes.io/ssl-redirect: "false"
-   cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/ssl-redirect: 'false'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
     - secretName: argo-tls-secret
@@ -18,7 +17,7 @@ spec:
     - host: argo.cluster.cloudnativerioja.com
       http:
         paths:
-        - path: /
-          backend:
-            serviceName: argocd-server
-            servicePort: http
+          - path: /
+            backend:
+              serviceName: argocd-server
+              servicePort: http
