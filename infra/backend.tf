@@ -10,6 +10,9 @@ terraform {
       source  = "civo/civo"
       version = "1.0.31"
     }
-    helm = "~> 1.1"
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.10.1"
+    }
   }
 }
