@@ -5,7 +5,17 @@ provider "civo" {
 
 provider "helm" {
   kubernetes {
-    host     = civo_kubernetes_cluster.demo-cluster.api_endpoint
-    insecure = true
+    config_path = "~/.kube/config"
+    exec {
+      api_version = "client.authentication.k8s.io/v1"
+      command     = "civo"
+      args = [
+        "kubernetes",
+        "config",
+        civo_kubernetes_cluster.demo-cluster.name,
+        "--save",
+        "--override",
+      ]
+    }
   }
 }
