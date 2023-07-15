@@ -5,7 +5,7 @@ provider "civo" {
 
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config"
+    config_path = local_file.kubeconfig.filename
     exec {
       api_version = "client.authentication.k8s.io/v1"
       command     = "civo"
