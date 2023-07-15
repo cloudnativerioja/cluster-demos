@@ -5,6 +5,6 @@ provider "civo" {
 
 provider "helm" {
   kubernetes {
-    config_path = "./kubeconfig"
+    host = civo_kubernetes_cluster.demo-cluster.api_endpoint
   }
 }
