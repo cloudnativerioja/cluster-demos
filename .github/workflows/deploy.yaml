@@ -75,9 +75,10 @@ jobs:
           helm repo update
 
       - name: Install ArgoCD
+        working-directory: ./argo-chart
         run: |
           helm upgrade --install argocd argo/argo-cd \
-          --create-namespace --version 5.39.0 -f argo-chart/values.yaml \
+          --create-namespace --version 5.39.0 -f values.yaml \
           --wait --timeout 5m0s -n argocd
 
       - name: Install Argo application
