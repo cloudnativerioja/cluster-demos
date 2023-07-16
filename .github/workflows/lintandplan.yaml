@@ -70,6 +70,7 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: "latest" # default is latest stable
+          token: ${{ secrets.GITHUB_TOKEN }}
         id: install
 
       - name: Add ArgoCD repo
