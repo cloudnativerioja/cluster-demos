@@ -36,15 +36,3 @@ resource "local_file" "kubeconfig" {
 resource "civo_dns_domain_name" "cluster_domain" {
   name = "cluster.cloudnativerioja.com"
 }
-
-# Install ArgoCD
-resource "helm_release" "argocd" {
-  depends_on = [civo_kubernetes_cluster.demo-cluster]
-  name       = "argocd"
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  namespace  = "argocd"
-  values = [
-    "${file("../argo-chart/values.yaml")}"
-  ]
-}

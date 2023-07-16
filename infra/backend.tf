@@ -10,6 +10,5 @@ terraform {
       source  = "civo/civo"
       version = "1.0.31"
     }
-    helm = "~> 1.1"
   }
 }
