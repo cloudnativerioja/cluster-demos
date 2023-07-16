@@ -7,6 +7,6 @@ cluster:
   cni: cilium
   label-nodes: demos-first-pool
   region: LON1
-  applications: "argo-cd,traefik"
+  applications: "traefik"
 firewall:
   name: demo-firewall
