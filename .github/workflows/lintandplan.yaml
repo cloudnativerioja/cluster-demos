@@ -67,7 +67,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v3
         with:
           version: "latest" # default is latest stable
         id: install

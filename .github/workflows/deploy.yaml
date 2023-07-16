@@ -63,7 +63,7 @@ jobs:
         id: install
 
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v3
         with:
           version: "latest" # default is latest stable
         id: install
@@ -75,8 +75,8 @@ jobs:
 
       - name: Install ArgoCD
         run: |
-          helm upgrade --install argocd argo/argo-cd \ 
-          --version 5.39.0 -f argo-chart/values.yaml --wait --timeout 5m0s 
+          helm upgrade --install argocd argo/argo-cd \
+          --version 5.39.0 -f argo-chart/values.yaml --wait --timeout 5m0s
 
       - name: Install Argo application
         working-directory: ./argo-app
