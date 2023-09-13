@@ -3,6 +3,7 @@ cluster:
   type: k3s
   name: demo-cluster
   nodes: 3
+  kubernetes_version: v1.24.4-k3s1
   node_type: g4s.kube.medium
   cni: cilium
   label-nodes: demos-first-pool
