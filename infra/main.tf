@@ -13,11 +13,11 @@ resource "civo_firewall" "firewall" {
 
 # Create a cluster with k3s
 resource "civo_kubernetes_cluster" "demo-cluster" {
-  name         = local.cluster.name
-  firewall_id  = civo_firewall.firewall.id
-  cluster_type = local.cluster.type
-  applications = try(local.cluster.applications, "")
-  cni          = try(local.cluster.cni, "")
+  name               = local.cluster.name
+  firewall_id        = civo_firewall.firewall.id
+  cluster_type       = local.cluster.type
+  applications       = try(local.cluster.applications, "")
+  cni                = try(local.cluster.cni, "")
   kubernetes_version = try(local.cluster.kubernetes_version, "v1.23.6+k3s1")
   pools {
     label      = local.cluster.label-nodes
