@@ -18,7 +18,7 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
   cluster_type       = local.cluster.type
   applications       = try(local.cluster.applications, "")
   cni                = try(local.cluster.cni, "")
-  kubernetes_version = try(local.cluster.kubernetes_version, "v1.23.6+k3s1")
+  kubernetes_version = try(local.cluster.kubernetes_version, "1.23.6-k3s1")
   pools {
     label      = local.cluster.label-nodes
     size       = element(data.civo_size.medium.sizes, 0).name
