@@ -3,7 +3,7 @@ cluster:
   type: k3s
   name: demo-cluster
   nodes: 3
-  node_type: g4s.kube.medium
+  node_type: g4s.kube.large
   cni: cilium
   label-nodes: demos-first-pool
   region: LON1
