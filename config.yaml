@@ -5,7 +5,7 @@ cluster:
   nodes: 3
   node_type: g4s.kube.large
   cni: cilium
-  label-nodes: demos-first-pool
+  label-nodes: partypool
   region: LON1
 firewall:
   name: demo-firewall
