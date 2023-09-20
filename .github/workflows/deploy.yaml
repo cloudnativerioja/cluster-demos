@@ -64,9 +64,11 @@ jobs:
 
       - name: Install Argo application
         working-directory: ./argo-app
+        # yamllint disable rule:line-length
         run: |
-          kubectl apply -f https://github.com/argoproj/argo-cd/tree/stable/manifests/crds # yamllint disable-line rule:line-length
+          kubectl apply -f https://github.com/argoproj/argo-cd/tree/stable/manifests/crds
           kubectl apply -f . --recursive
+        # yamllint enable rule:line-length
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.55.0
