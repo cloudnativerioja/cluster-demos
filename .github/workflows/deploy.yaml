@@ -65,6 +65,7 @@ jobs:
       - name: Install Argo application
         working-directory: ./argo-app
         run: |
+          kubectl apply -f https://github.com/argoproj/argo-cd/tree/stable/manifests/crds
           kubectl apply -f . --recursive
 
       - name: Bump version and push tag
