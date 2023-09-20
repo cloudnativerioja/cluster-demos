@@ -65,7 +65,7 @@ jobs:
       - name: Install Argo application
         working-directory: ./argo-app
         run: |
-          kubectl apply -f https://github.com/argoproj/argo-cd/tree/stable/manifests/crds
+          kubectl apply -f https://github.com/argoproj/argo-cd/tree/stable/manifests/crds # yamllint disable-line rule:line-length
           kubectl apply -f . --recursive
 
       - name: Bump version and push tag
