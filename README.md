@@ -22,4 +22,13 @@ Para el despliegue de la infraestructura se ha utilizado Terraform, el cual se e
 
 Para la configuración del cluster se ha creado un fichero llamado `config.yaml`, en el cual se especifican los párametros para cambiar dinamicamente variables como la cantidad y tipo de nodos, el software de configuración del cluster, nombre del cluster, aplicaciones por defecto a instalar...
 
+## Primera instalación ArgoCD
+
+Para la instalación de ArgoCD manualmente (solo se hace una vez, la aplicación se mantiene en el repositorio cluster-applications) es necesario ejecutar los siguientes comandos:
+
+```bash
+kubectl create namespace argocd
+helm install argocd argo/argo-cd --version 5.46.6 -n argocd
+```
+
 # POWERED BY [CIVO CLOUD](https://www.civo.com/)
