@@ -1,0 +1,17 @@
+ci/cd:
+  - .github/workflows/*
+
+infrastructure:
+  - "**/*.tf"
+
+documentation:
+  - "**/*.md"
+
+secrets:
+  - "**/*encrypted.yaml"
+
+cluster-config:
+  - "**/config.yaml"
+
+ArgoCD:
+  - "**/argo-app/*.yaml"
