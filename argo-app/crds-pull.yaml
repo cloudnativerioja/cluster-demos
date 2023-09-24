@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: core-apps
+  name: core-apps-crds
   namespace: argocd
 spec:
   destination:
