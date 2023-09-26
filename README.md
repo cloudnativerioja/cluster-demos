@@ -24,7 +24,7 @@ Para la configuración del cluster se ha creado un fichero llamado `config.yaml`
 
 ## Primera instalación ArgoCD
 
-Para la instalación de ArgoCD manualmente (solo se hace una vez, la aplicación se mantiene en el repositorio cluster-applications) es necesario ejecutar los siguientes comandos:
+Para la instalación de ArgoCD manualmente (solo se hace una vez, la aplicación se mantiene en el repositorio cluster-applications) es necesario ejecutar los comandos siguientes:
 
 ```bash
 kubectl create namespace argocd
