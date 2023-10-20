@@ -51,6 +51,7 @@ jobs:
       # Generates an execution plan for Terraform
       - name: Terraform Plan
         id: tf-plan
+        # yamllint disable-line rule:line-length
         run: |
           export exitcode=0
           terraform plan -detailed-exitcode -no-color -out tfplan || export exitcode=$?
@@ -63,7 +64,7 @@ jobs:
           else
             exit 0
           fi
-
+        # yamllint enable-line rule:line-length
       # Save plan to artifacts
       - name: Publish Terraform Plan
         uses: actions/upload-artifact@v3
@@ -142,7 +143,7 @@ jobs:
                 body: body
              })
             }
-
+          # yamllint enable-line rule:line-length
       # If changes aren't detected, close any open drift issues
       - name: Publish Drift Report
         if: steps.tf-plan.outputs.exitcode == 0
