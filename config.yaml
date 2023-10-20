@@ -2,7 +2,7 @@
 cluster:
   type: k3s
   name: demos-cluster
-  nodes: 3
+  nodes: 2
   node_type: g4s.kube.medium
   cni: cilium
   label-nodes: partypool
