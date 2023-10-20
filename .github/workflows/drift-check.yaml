@@ -103,6 +103,7 @@ jobs:
           SUMMARY: "${{ steps.tf-plan-string.outputs.summary }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # yamllint disable-line rule:line-length
           script: |
             const body = `${process.env.SUMMARY}`;
             const title = 'Terraform Configuration Drift Detected';
@@ -163,7 +164,7 @@ jobs:
 
             if( issues.data.length > 0 ) {
               const issue = issues.data[0]
-              
+
               github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
