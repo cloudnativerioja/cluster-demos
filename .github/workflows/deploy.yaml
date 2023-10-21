@@ -32,6 +32,12 @@ jobs:
         with:
           terraform_version: 1.3.0
 
+      - name: Set kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" > kubeconfig
+          mv kubeconfig ~/.kube/config
+
       - name: Terraform init
         id: init
         run: terraform init -upgrade
@@ -50,11 +56,6 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
-
-      - name: Move kubeconfig
-        run: |
-          mkdir -p ~/.kube
-          mv kubeconfig ~/.kube/config
 
       - name: Install kubectl
         id: kubectl
