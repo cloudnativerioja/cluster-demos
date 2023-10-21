@@ -24,11 +24,3 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
     node_count = local.cluster.nodes
   }
 }
-
-
-resource "local_file" "kubeconfig" {
-  depends_on = [civo_kubernetes_cluster.demo-cluster]
-  filename   = "./kubeconfig"
-  content    = civo_kubernetes_cluster.demo-cluster.kubeconfig
-}
-
