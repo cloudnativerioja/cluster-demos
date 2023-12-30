@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: core-apps-crds
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   destination:
     name: ""
@@ -26,4 +28,5 @@ spec:
         duration: 5s
         maxDuration: 3m0s
         factor: 2
-    syncOptions: []
+    syncOptions:
+      - ServerSideApply=true
