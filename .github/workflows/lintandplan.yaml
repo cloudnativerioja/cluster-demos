@@ -72,11 +72,11 @@ jobs:
 
   popeye:
     runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG_DATA }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Export kubeconfig
-        run: export KUBECONFIG={{ secrets.KUBECONFIG_DATA }}
       - name: Download Popeye Binary
         run: |
           wget https://github.com/derailed/popeye/releases/latest/download/popeye_Linux_amd64.tar.gz
