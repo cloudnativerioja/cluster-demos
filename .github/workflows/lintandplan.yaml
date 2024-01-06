@@ -75,13 +75,73 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+      - name: Export kubeconfig
+        run: export KUBECONFIG={{ secrets.KUBECONFIG_DATA }}
       - name: Download Popeye Binary
         run: |
           wget https://github.com/derailed/popeye/releases/latest/download/popeye_Linux_amd64.tar.gz
           tar xzf popeye_Linux_amd64.tar.gz
           chmod +x popeye
           sudo mv popeye /usr/local/bin/
-      - name: Run Popeye
+
+      - name: Run Popeye and Save Report
         run: |
-          popeye
+          popeye --output json > popeye_report.json
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq -y
+
+      - name: Extract Information from Popeye Report
+        run: |
+          total_issues=$(jq '.summary.total' popeye_report.json)
+          critical_issues=$(jq '.summary.critical' popeye_report.json)
+
+      - name: Create Comment
+        id: comment
+        run: |
+          echo "Popeye Report Summary:"
+          echo "Total Issues: $total_issues"
+          echo "Critical Issues: $critical_issues"
+          echo ""
+          echo "Full Report can be found in the artifacts."
+
+      - name: Upload Popeye Report as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: popeye-report
+          path: popeye_report.json
+
+  upload-comment:
+    needs: popeye
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Popeye Report Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: popeye-report
+          path: popeye-report
+
+      - name: Get Comment Body
+        id: comment
+        run: |
+          echo "::set-output name=body::Popeye Report Summary:"
+          echo "Total Issues: $(jq '.summary.total' popeye-report/popeye_report.json)"
+          echo "Critical Issues: $(jq '.summary.critical' popeye-report/popeye_report.json)"
+          echo ""
+          echo "![Popeye Report](./popeye-report/popeye_report.json)"
+
+      - name: Comment on Pull Request
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { context, github } = require('@actions/github');
+            const body = `<!DOCTYPE html><html><body>${process.env.comment}</body></html>`;
+            github.issues.createComment({
+              ...context.repo,
+              issue_number: context.payload.pull_request.number,
+              body: body,
+            });
