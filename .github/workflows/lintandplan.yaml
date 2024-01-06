@@ -86,7 +86,7 @@ jobs:
 
       - name: Run Popeye and Save Report
         run: |
-          popeye --output json > popeye_report.json
+          popeye save --out json --output-file popeye_report.json
 
       - name: Install jq
         run: |
