@@ -78,11 +78,10 @@ jobs:
 
       - name: Download Popeye Binary
         run: |
-          wget https://github.com/derailed/popeye/releases/latest/download/popeye_$(uname -s)_$(uname -m).tar.gz
-          tar xzf popeye_$(uname -s)_$(uname -m).tar.gz
+          wget https://github.com/derailed/popeye/releases/latest/download/popeye_Linux_amd64.tar.gz
+          tar xzf popeye_Linux_amd64.tar.gz
           chmod +x popeye
           sudo mv popeye /usr/local/bin/
-
       - name: Run Popeye
         run: |
           popeye
