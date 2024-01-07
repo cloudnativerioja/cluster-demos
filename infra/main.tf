@@ -24,3 +24,22 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
     node_count = local.cluster.nodes
   }
 }
+
+# Add a node pool
+resource "civo_kubernetes_node_pool" "runners" {
+  cluster_id = civo_kubernetes_cluster.demo-cluster.id
+  label      = "runners"                                   // Optional
+  node_count = local.extra-nodepool.nodes                  // Optional
+  size       = element(data.civo_size.small.sizes, 0).name // Optional
+  region     = "LON1"
+
+  labels = {
+    runners = "true"
+  }
+
+  taint {
+    key    = "runners"
+    value  = "true"
+    effect = "NoSchedule"
+  }
+}

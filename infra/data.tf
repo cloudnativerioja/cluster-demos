@@ -10,3 +10,16 @@ data "civo_size" "large" {
     direction = "asc"
   }
 }
+
+# Query small instance size
+data "civo_size" "small" {
+  filter {
+    key    = "name"
+    values = [local.extra-nodepool.node_type]
+  }
+
+  sort {
+    key       = "ram"
+    direction = "asc"
+  }
+}
