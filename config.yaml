@@ -9,3 +9,6 @@ cluster:
   region: LON1
 firewall:
   name: demos-firewall
+extra-nodepool:
+  nodes: 1
+  node_type: g4s.kube.small
