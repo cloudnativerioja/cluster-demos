@@ -20,7 +20,7 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
   cni          = try(local.cluster.cni, "")
   pools {
     label      = local.cluster.label-nodes
-    size       = element(data.civo_size.large.sizes, 0).name
+    size       = element(data.civo_size.medium.sizes, 0).name
     node_count = local.cluster.nodes
   }
 }

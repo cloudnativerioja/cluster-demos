@@ -1,5 +1,5 @@
 # Query medium instance size
-data "civo_size" "large" {
+data "civo_size" "medium" {
   filter {
     key    = "name"
     values = [local.cluster.node_type]
