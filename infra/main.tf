@@ -23,6 +23,9 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
     size       = element(data.civo_size.medium.sizes, 0).name
     node_count = local.cluster.nodes
   }
+  lifecycle {
+    ignore_changes = [pools]
+  }
 }
 
 # Add a node pool
@@ -41,5 +44,8 @@ resource "civo_kubernetes_node_pool" "runners" {
     key    = "runners"
     value  = "true"
     effect = "NoSchedule"
+  }
+  lifecycle {
+    ignore_changes = [node_count]
   }
 }
