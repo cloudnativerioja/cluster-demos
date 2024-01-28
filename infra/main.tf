@@ -31,7 +31,7 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
 # Add a node pool
 resource "civo_kubernetes_node_pool" "high-spec" {
   cluster_id = civo_kubernetes_cluster.demo-cluster.id
-  label      = "high-spec"                                   // Optional
+  label      = "high-spec"                                 // Optional
   node_count = local.extra-nodepool.nodes                  // Optional
   size       = element(data.civo_size.small.sizes, 0).name // Optional
   region     = "LON1"
