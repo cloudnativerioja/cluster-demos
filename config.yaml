@@ -11,4 +11,4 @@ firewall:
   name: demos-firewall
 extra-nodepool:
   nodes: 1
-  node_type: g4s.kube.small
+  node_type: g4s.kube.medium

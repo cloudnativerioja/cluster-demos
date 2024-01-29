@@ -29,19 +29,19 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
 }
 
 # Add a node pool
-resource "civo_kubernetes_node_pool" "runners" {
+resource "civo_kubernetes_node_pool" "high-spec" {
   cluster_id = civo_kubernetes_cluster.demo-cluster.id
-  label      = "runners"                                   // Optional
+  label      = "high-spec"                                 // Optional
   node_count = local.extra-nodepool.nodes                  // Optional
   size       = element(data.civo_size.small.sizes, 0).name // Optional
   region     = "LON1"
 
   labels = {
-    runners = "true"
+    high-spec = "true"
   }
 
   taint {
-    key    = "runners"
+    key    = "high-spec"
     value  = "true"
     effect = "NoSchedule"
   }
