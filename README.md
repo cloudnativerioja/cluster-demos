@@ -1,30 +1,30 @@
-# Descripción proyecto
+# Project Description
 
-Cluster proporcionado por **Civo Cloud** para el Cloud Native Rioja.
+Cluster provided by **Civo Cloud** for Cloud Native Rioja.
 
-## Diagrama de arquitectura
+## Architecture Diagram
 
 ![arch-diagram](assets/cluster-demos.png)
 
-## Objetivo
+## Objective
 
-El cluster proporcionado por Civo Cloud se utilizará para el desarrollo de aplicaciones y servicios de la comunidad Cloud Native Rioja. Se utilizará para realizar pruebas de concepto, despliegue de aplicaciones y servicios, y para la realización de talleres y eventos.
+The cluster provided by Civo Cloud will be used for developing applications and services for the Cloud Native Rioja community. It will be utilized for conducting proof of concepts, deploying applications and services, and for hosting workshops and events.
 
-## Funcionamiento
+## Operation
 
-El cluster actualmente está compuesto por 3 nodos de 4Gb Ram y 2vCPU cada uno. Simplemente se han creado 2 workflow en Github para el despliegue de la infraestructura y la instalación de aplicaciones adicionales.
+The cluster currently consists of 3 nodes with 4GB RAM and 2 vCPUs each. Two workflows have been created on Github for deploying the infrastructure and installing additional applications.
 
-## Despliegue
+## Deployment
 
-Para el despliegue de la infraestructura se ha utilizado Terraform, el cual se encarga de crear los nodos y las aplicaciones adicionales. Para ello se ha creado un workflow en Github que se ejecuta al realizar un push en la rama master.
+Terraform has been used for deploying the infrastructure, which is responsible for creating the nodes and additional applications. A Github workflow has been created for this purpose, which runs upon pushing to the master branch.
 
-## Configuración
+## Configuration
 
-Para la configuración del cluster se ha creado un fichero llamado `config.yaml`, en el cual se especifican los párametros para cambiar dinamicamente variables como la cantidad y tipo de nodos, el software de configuración del cluster, nombre del cluster, aplicaciones por defecto a instalar...
+For configuring the cluster, a file named `config.yaml` has been created, in which parameters are specified to dynamically change variables such as the quantity and type of nodes, cluster configuration software, cluster name, default applications to install, etc.
 
-## Primera instalación ArgoCD
+## Initial ArgoCD Installation
 
-Para la instalación de ArgoCD manualmente (solo se hace una vez, la aplicación se mantiene en el repositorio cluster-applications) es necesario ejecutar los comandos siguientes:
+For manually installing ArgoCD (only done once, the application remains in the cluster-applications repository), the following commands need to be executed:
 
 ```bash
 kubectl create namespace argocd
