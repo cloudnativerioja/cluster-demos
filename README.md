@@ -6,7 +6,7 @@ Cluster provided by **Civo Cloud** for Cloud Native Rioja.
 
 ![arch-diagram](assets/cluster-demos.png)
 
-## Objective
+## Assessment
 
 The cluster provided by Civo Cloud will be used for developing applications and services for the Cloud Native Rioja community. It will be utilized for conducting proof of concepts, deploying applications and services, and for hosting workshops and events.
 
