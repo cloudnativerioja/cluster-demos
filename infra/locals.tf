@@ -3,5 +3,4 @@ locals {
   vars           = local.config_yaml
   cluster        = local.vars.cluster
   firewall       = local.vars.firewall
-  extra-nodepool = local.vars.extra-nodepool
 }

@@ -1,14 +1,11 @@
 ---
 cluster:
   type: k3s
-  name: demos-cluster
+  name: demo-cluster
   nodes: 2
-  node_type: g4s.kube.medium
+  node_type: g4s.kube.large
   cni: cilium
   label-nodes: partypool
   region: LON1
 firewall:
   name: demos-firewall
-extra-nodepool:
-  nodes: 1
-  node_type: g4s.kube.medium
