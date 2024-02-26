@@ -28,24 +28,8 @@ resource "civo_kubernetes_cluster" "demo-cluster" {
   }
 }
 
-# Add a node pool
-resource "civo_kubernetes_node_pool" "high-spec" {
-  cluster_id = civo_kubernetes_cluster.demo-cluster.id
-  label      = "high-spec"                                 // Optional
-  node_count = local.extra-nodepool.nodes                  // Optional
-  size       = element(data.civo_size.small.sizes, 0).name // Optional
-  region     = "LON1"
-
-  labels = {
-    high-spec = "true"
-  }
-
-  taint {
-    key    = "high-spec"
-    value  = "true"
-    effect = "NoSchedule"
-  }
-  lifecycle {
-    ignore_changes = [node_count]
-  }
+resource "local_file" "kubeconfig" {
+  depends_on = [civo_kubernetes_cluster.demo-cluster]
+  filename   = "./kubeconfig"
+  content    = civo_kubernetes_cluster.demo-cluster.kubeconfig
 }
